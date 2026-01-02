@@ -22,10 +22,15 @@
     background-image: url("../../images/overlay.png"),
       linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
       url("../../images/bg.jpg");
-    background-size: auto, auto, 100% auto;
-    background-position: center, center, top center;
+    background-size: auto, auto, cover;
+    background-position: center, center, center;
     background-repeat: repeat, no-repeat, no-repeat;
     background-attachment: scroll, scroll, scroll;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
     z-index: -1;
 
     &.fixed {
@@ -60,7 +65,7 @@
 
   @include orientation(portrait) {
     > .bg {
-      background-size: auto, auto, auto 175%;
+      background-size: auto, auto, cover;
     }
   }
 }

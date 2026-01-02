@@ -41,7 +41,8 @@
   }
 }
 @import url(fontawesome-all.min.css);
-@import url("https://fonts.googleapis.com/css?family=Merriweather:300,700,300italic,700italic|Source+Sans+Pro:900");
+/* @import url("https://fonts.googleapis.com/css?family=Merriweather:300,700,300italic,700italic|Source+Sans+Pro:900"); */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
 /*
 	Massively by HTML5 UP
@@ -278,7 +279,7 @@ body,
 input,
 select,
 textarea {
-  font-family: "Merriweather", Georgia, serif;
+  font-family: "DM Sans", "Inter", serif;
   font-weight: 300;
   font-size: 1rem;
   line-height: 2.375;
@@ -2548,7 +2549,7 @@ input[type="radio"] + label {
   display: inline-block;
   font-size: 1rem;
   letter-spacing: 0;
-  font-family: "Merriweather", Georgia, serif;
+  font-family: "DM Sans", "Inter", serif;
   text-transform: none;
   font-weight: 300;
   padding-left: 2.8rem;
@@ -3387,10 +3388,15 @@ table.alt tbody tr td {
   background-image: url("../../images/overlay.png"),
     linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
     url("../../images/bg.jpg");
-  background-size: auto, auto, 100% auto;
-  background-position: center, center, top center;
+  background-size: auto, auto, cover;
+  background-position: center, center, center;
   background-repeat: repeat, no-repeat, no-repeat;
   background-attachment: scroll, scroll, scroll;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
   z-index: -1;
 }
 
@@ -3427,7 +3433,7 @@ body.is-preload #wrapper.fade-in:before {
 
 @media screen and (orientation: portrait) {
   #wrapper > .bg {
-    background-size: auto, auto, auto 175%;
+    background-size: auto, auto, cover;
   }
 }
 
@@ -4034,6 +4040,7 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
   border-style: solid;
   border-top-width: 2px;
   text-align: center;
+  margin: 0;
 }
 
 #main > .posts > article > :last-child {
@@ -4545,6 +4552,25 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
   }
 }
 
+/* Footer Grid Layout (responsive) */
+#footer > section.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
+@media screen and (max-width: 980px) {
+  #footer > section.footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #footer > section.footer-grid {
+    gap: 1.25rem;
+  }
+}
+
 #copyright {
   color: #ffffff;
   position: relative;
@@ -4653,6 +4679,7 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
 /* Nav Panel */
 
 #navPanelToggle {
+  display: none !important;
   text-decoration: none;
   -moz-transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
     box-shadow 0.2s ease-in-out;
